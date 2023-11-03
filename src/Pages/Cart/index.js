@@ -1,4 +1,5 @@
 
+
 import React from 'react'
 import Button from '../../Components/Button'
 import { useSelector, useDispatch } from 'react-redux'
@@ -8,6 +9,7 @@ import { updateCart } from '../../store/slices/cartSlice'
 import { subTotalOfCartItems } from '../../store/slices/cartSlice'
 import { removeSubTotal } from '../../store/slices/cartSlice'
 import { updateSubTotal } from '../../store/slices/cartSlice'
+import html2pdf from 'html2pdf.js';
 
 function Cart() {
     const dispatch = useDispatch();
@@ -23,9 +25,6 @@ function Cart() {
         dispatch(updateCart(obj))
         dispatch(updateSubTotal())
     }
-
-    // const allProducts = useSelector((state) => state.reducer2.state)
-    // console.log(allProducts)
 
     return (
         <div>
@@ -108,8 +107,25 @@ export default Cart
 
 
 const TotalBill = ({ total }) => {
+
+
+    const DownloadasImage = (e) => {
+        e.preventDefault();
+        console.log('nwehojfp34ojuo')
+        var element = document.getElementById('tble');
+        var opt = {
+            margin : 1 ,
+            filename: 'myfile.pdf' ,
+            image: {type: 'jpeg' , quality : 0.98} ,
+            html2convas: {scale:2},
+            jsPDF : {unit: 'in' , format : 'letter' , orientation: 'portrait'}
+        };
+
+        html2pdf(element , opt);
+    }
     return (
-        <div className="border border-black h-full w-60 m-7 p-2 ">
+
+        <form id='tble' className="border border-black h-full w-60 m-7 p-2 " onSubmit={(e) => DownloadasImage(e) }>
             <h2 className='text-md text-semi-bold p-3'>Cart total</h2>
             <div className="flex justify-between border-b-2 p-2 mx-2">
                 <p className='text-sm'>Subtotal:</p>
@@ -123,7 +139,7 @@ const TotalBill = ({ total }) => {
                 <p className='text-sm tet-black'>Total:</p>
                 <p>${total}</p>
             </div>
-            <Button variant='dander' size='large' className={'flex items-center justify-center p-5 m-5 bg-rose-600 text-white hover:opacity-75'}>Download Receipt</Button>
-        </div>
+            <Button variant='dander' size='large'  className={'flex items-center justify-center p-5 m-5 bg-rose-600 text-white hover:opacity-75'}>Download Receipt</Button>
+        </form>
     )
 }
