@@ -33,7 +33,6 @@ function Home() {
                     subTotal : item.newPrice
                 }));
                 dispatch(setData(newData));
-                dispatch(resetWishlist());
             })
             .catch((error) => {
                 console.error('Error fetching data:', error);

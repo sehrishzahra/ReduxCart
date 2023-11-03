@@ -6,13 +6,20 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { setSearchProducts } from '../../store/slices/searchedProductsSlice'
 import { setSearchStatus } from '../../store/slices/searchedProductsSlice'
+import { useEffect } from 'react'
+import { resetWishlist } from '../../store/slices/wishlistSlice'
+
 function Header() {
     const dispatch = useDispatch();
     const [searching, setSearching] = useState('')
     const list = useSelector((state) => state.wishlist)
     const cartData = useSelector((state) => state.cartItems.items)
-    const mydata = useSelector((state) => state.data.data)
+    const mydata = useSelector((state) => state.data.data);
 
+    useEffect(() => {
+        dispatch(resetWishlist())
+    }, [dispatch])
+    
     const SearchProducts = (e) => {
         e.preventDefault();
         if (searching) {

@@ -84,7 +84,7 @@ function Cart() {
                                             ${item.subTotal}
                                         </td>
                                         <td>
-                                            <Button size='medium' variant='danger' onClick={() => dispatch(deleteProduct(item.id))}>
+                                            <Button size='medium' variant='danger' onClick={() => {dispatch(deleteProduct(item.id)); dispatch(updateSubTotal())}}>
                                                 Delete
                                             </Button>
                                         </td>
