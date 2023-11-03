@@ -2,7 +2,7 @@ import React from 'react'
 import Button from '../../Components/Button'
 import ProductCard from '../../Components/ProductCard'
 import { useSelector, useDispatch } from 'react-redux'
-import { setAlltoCartItems } from '../../store/slices/cartSlice'
+import { setAlltoCartItems , updateSubTotal } from '../../store/slices/cartSlice'
 
 function Products() {
     const dispatch = useDispatch();
@@ -19,7 +19,7 @@ function Products() {
                 <div className="">
                     <p>Total Products({mydata.length}) </p>
                 </div>
-                <Button variant='naked' size='large' onClick={() => dispatch(setAlltoCartItems(mydata))}>
+                <Button variant='naked' size='large' onClick={() => {dispatch(setAlltoCartItems(mydata)) ; dispatch(updateSubTotal())} }>
                     Move All to Cart
                 </Button>
             </div>

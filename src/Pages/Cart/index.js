@@ -51,8 +51,8 @@ function Cart() {
                                         Subtotal
                                     </th>
                                 </tr>
-                            </thead>
-                            {cartData.length === 0 && <div className=" w-full text-lg flex items-center justify-center m-10">No Items in Cart</div>}
+                            </thead>s
+                            {!cartData && <div className=" w-full text-lg flex items-center justify-center m-10">No Items in Cart</div>}
                             {cartData.map((item, index) => (
                                 <tbody key={index}>
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 border m-3">
@@ -65,8 +65,7 @@ function Cart() {
                                         </td>
                                         <td className="px-6 py-4">
                                             <label htmlFor="numbers" className="text-sm bold">Qty </label>
-
-                                            <select name="num" id="numbers" onChange={(e) => { updateCartVal(e.target.value, item.id); }} className="border px-3 rounded">
+                                            <select name="num" id="numbers" onChange={(e) => {updateCartVal(e.target.value, item.id); }} className="border px-3 rounded">
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -85,9 +84,7 @@ function Cart() {
                                     </tr>
                                 </tbody>
                             ))}
-
                         </table>
-
                     </div>
 
 

@@ -50,7 +50,8 @@ function Home() {
                     title: item.title,
                     oldPrice: item.oldPrice,
                     newPrice: item.newPrice,
-                    discountInPercentage: item.discountInPercentage
+                    discountInPercentage: item.discountInPercentage,
+                    subTotal : item.newPrice
                 }));
 
                 // Dispatch data to Redux store
@@ -68,16 +69,16 @@ function Home() {
             {mydata.length === 0 && <div>Loading...</div>}
             <div className="flex flex-col w-full justify-center items-center">
                 <div className="flex justify-around w-11/12">
-                    {status === true && searchingData.length > -1 && searchingData.map((data, index) => (
+                    {status === true && searchingData && searchingData.map((data, index) => (
                         <div className="" key={index}>
-                            <ProductCard id={data.id} title={data.title} newPrice={data.newPrice} oldPrice={data.oldPrice} discount={data.discountInPercentage} url={data.image} />
+                            <ProductCard id={data.id} title={data.title} newPrice={data.newPrice} oldPrice={data.oldPrice} discount={data.discountInPercentage} url={data.image} subTotal={data.subTotal}/>
                         </div>
                     ))}
 
                     { status === false && mydata &&
                         mydata.slice(0, 4).map((data) => (
                             <div className="" key={data.id}>
-                                <ProductCard id={data.id} title={data.title} newPrice={data.newPrice} oldPrice={data.oldPrice} discount={data.discountInPercentage} url={data.image} />
+                                <ProductCard id={data.id} title={data.title} newPrice={data.newPrice} oldPrice={data.oldPrice} discount={data.discountInPercentage} url={data.image} subTotal={data.subTotal}/>
                             </div>
                         ))
                     }

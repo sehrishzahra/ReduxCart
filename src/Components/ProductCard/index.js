@@ -3,8 +3,8 @@ import heart from '../../assets/Wishlist.png'
 import Button from '../Button'
 import { setWishlist } from '../../store/slices/whishlistSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { setCartItems } from '../../store/slices/cartSlice'
-import { subTotalOfCartItems } from '../../store/slices/cartSlice'
+import { setCartItems, updateSubTotal } from '../../store/slices/cartSlice'
+import { subTotalOfCartItems  } from '../../store/slices/cartSlice'
 
 
 function ProductCard({ id, title, newPrice, oldPrice, discount, url }) {
