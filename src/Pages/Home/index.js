@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Banner from '../../Components/Banner'
 import ProductCard from '../../Components/ProductCard'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,7 +7,7 @@ import { setData } from '../../store/slices/StoreData'
 import axios from 'axios'
 import Button from '../../Components/Button'
 import { Link } from 'react-router-dom'
-import { setSearchStatus } from '../../store/slices/searchedProductsSlice'
+import { resetWishlist } from '../../store/slices/wishlistSlice'
 
 function Home() {
     const mydata = useSelector((state) => state.data.data)
@@ -17,30 +17,9 @@ function Home() {
     const status = useSelector((state) => state.searchStatus.searching)
     console.log(status)
     const dispatch = useDispatch()
-    // const [productsData, setProductsData] = useState([]);
-    // setProductsData(mydata)
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //       try {
-    //         const data = await fetchDataFromJson();
-    //         dispatch(setData(data)); // Dispatch the fetched data to the Redux Toolkit slice
-    //       } catch (error) {
-    //         // Handle errors if necessary
-    //       }
-    //     };
-
-    //     fetchData(); // Call the fetchData function when the component mounts
-    //   }, [dispatch]);
-
-    // useEffect(() => {
-    //     dispatch(fetchDatafromJson)
-    // }, [dispatch])
 
     useEffect(() => {
-        // Fetch data from JSON file (assuming data.json is in the public folder)
         axios.get('/Data.json')
-            //   .then((response) => response.json())
             .then((jsonData) => {
                 console.log(jsonData.data)
                 const mydata = jsonData.data;
@@ -53,13 +32,13 @@ function Home() {
                     discountInPercentage: item.discountInPercentage,
                     subTotal : item.newPrice
                 }));
-
-                // Dispatch data to Redux store
                 dispatch(setData(newData));
+                dispatch(resetWishlist());
             })
             .catch((error) => {
                 console.error('Error fetching data:', error);
             });
+      
     }, [dispatch]);
 
     return (

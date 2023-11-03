@@ -6,10 +6,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { removeCartItems } from '../../store/slices/cartSlice'
 import { Link } from 'react-router-dom'
 import { updateCart } from '../../store/slices/cartSlice'
-import { subTotalOfCartItems } from '../../store/slices/cartSlice'
 import { removeSubTotal } from '../../store/slices/cartSlice'
 import { updateSubTotal } from '../../store/slices/cartSlice'
 import html2pdf from 'html2pdf.js';
+import {deleteProduct} from '../../store/slices/cartSlice'
 
 function Cart() {
     const dispatch = useDispatch();
@@ -32,7 +32,6 @@ function Cart() {
                 <div className="p-10">
                     <p className='text-sm text-gray-300'> Home / <span className='text-sm text-black'>Cart</span></p>
                 </div>
-
                 <div className="m-7">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
@@ -50,8 +49,11 @@ function Cart() {
                                     <th scope="col" class="px-6 py-3">
                                         Subtotal
                                     </th>
+                                    <th>
+
+                                    </th>
                                 </tr>
-                            </thead>s
+                            </thead>
                             {!cartData && <div className=" w-full text-lg flex items-center justify-center m-10">No Items in Cart</div>}
                             {cartData.map((item, index) => (
                                 <tbody key={index}>
@@ -80,6 +82,11 @@ function Cart() {
                                         </td>
                                         <td className="px-6 py-4">
                                             ${item.subTotal}
+                                        </td>
+                                        <td>
+                                            <Button size='medium' variant='danger' onClick={() => dispatch(deleteProduct(item.id))}>
+                                                Delete
+                                            </Button>
                                         </td>
                                     </tr>
                                 </tbody>

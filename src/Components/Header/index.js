@@ -5,17 +5,13 @@ import search from '../../assets/Vector.png'
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { setSearchProducts } from '../../store/slices/searchedProductsSlice'
-import {setSearchStatus} from '../../store/slices/searchedProductsSlice'
+import { setSearchStatus } from '../../store/slices/searchedProductsSlice'
 function Header() {
     const dispatch = useDispatch();
     const [searching, setSearching] = useState('')
-    console.log(searching)
     const list = useSelector((state) => state.wishlist)
-    console.log(list)
     const cartData = useSelector((state) => state.cartItems.items)
-    console.log(cartData)
     const mydata = useSelector((state) => state.data.data)
-    console.log(mydata)
 
     const SearchProducts = (e) => {
         e.preventDefault();
@@ -65,7 +61,6 @@ function Header() {
                     </Link>
                 </div>
             </div>
-
         </div>
     )
 }

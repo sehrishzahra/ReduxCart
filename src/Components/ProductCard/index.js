@@ -1,10 +1,9 @@
 import React from 'react'
 import heart from '../../assets/Wishlist.png'
 import Button from '../Button'
-import { setWishlist } from '../../store/slices/whishlistSlice'
-import { useDispatch, useSelector } from 'react-redux'
+import { setWishlist } from '../../store/slices/wishlistSlice'
+import { useDispatch } from 'react-redux'
 import { setCartItems, updateSubTotal } from '../../store/slices/cartSlice'
-import { subTotalOfCartItems  } from '../../store/slices/cartSlice'
 
 
 function ProductCard({ id, title, newPrice, oldPrice, discount, url }) {
@@ -27,7 +26,7 @@ function ProductCard({ id, title, newPrice, oldPrice, discount, url }) {
                             size='large'
                             onClick={() => {
                                 dispatch(setCartItems({ id, title, newPrice, oldPrice, discount, url }
-                                )); dispatch(subTotalOfCartItems())
+                                )); dispatch(updateSubTotal())
                             }}
                         >
                             Add to cart
