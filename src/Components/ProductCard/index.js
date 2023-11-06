@@ -21,7 +21,7 @@ function ProductCard({ id, title, newPrice, oldPrice, discount, url }) {
                     </div>
                     <div className="" >
                         <Button
-                            className={'bg-black text-white w-full hover:opacity-75 hover:text-white'}
+                            className={'rounded-bl-xl rounded-br-xl bg-black text-white w-full hover:opacity-75 hover:text-white'}
                             variant='naked'
                             size='large'
                             onClick={() => {

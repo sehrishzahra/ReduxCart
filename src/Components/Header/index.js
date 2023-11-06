@@ -60,11 +60,11 @@ function Header() {
                 <div className="flex gap-4">
                     <div className="relative">
                         <img src={wishlist} alt="" />
-                        <span className='rounded w-6 h-6 bg-rose-600 absolute flex items-center justify-center top-[-3px] right-[-6px] w-5 h-5 text-xs text-white ' style={{ borderRadius: "50%" }}>{!list ? 0 : list.length}</span>
+                        <span className={` ${list.length === 0 ? 'hidden' : ''} rounded w-6 h-6 bg-rose-600 absolute flex items-center justify-center top-[-3px] right-[-6px] w-5 h-5 text-xs text-white`} style={{ borderRadius: "50%" }}>{!list ? 0 : list.length}</span>
                     </div>
                     <Link to={'/cart'} className='relative'>
                         <img src={cart} alt="" />
-                        <div className='rounded w-6 h-6 bg-rose-600 absolute flex items-center justify-center top-[-3px] right-[-6px] w-5 h-5 text-xs text-white ' style={{ borderRadius: "50%" }}>{!cartData ? 0 : cartData.length}</div>
+                        <div className={`${cartData.length === 0 ? 'hidden' : ''} rounded w-6 h-6 bg-rose-600 absolute flex items-center justify-center top-[-3px] right-[-6px] w-5 h-5 text-xs text-white`} style={{ borderRadius: "50%" }}>{!cartData ? 0 : cartData.length}</div>
                     </Link>
                 </div>
             </div>

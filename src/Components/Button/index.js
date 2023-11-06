@@ -13,7 +13,7 @@ const sizes = {
 function Button({ className, variant = 'primary', size = 'small', ...props }) {
     return (
         <button
-            className={`inline-flex justify-center items-center bordered-transparent border rounded-md font-md shadow-sm focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed
+            className={`inline-flex justify-center items-center bordered-transparent border font-md shadow-sm focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed
             ${className} 
             ${variants[variant]}
             ${sizes[size]}

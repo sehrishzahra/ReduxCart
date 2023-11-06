@@ -27,7 +27,7 @@ const cartSlice = createSlice({
                     items: [...state.items, newItem],
                 };
             }
-            return state;
+            // return state;
             // if (existingItem === -1) {
             //     state.items.push(newItem);
             // } 

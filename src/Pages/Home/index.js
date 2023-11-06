@@ -65,7 +65,8 @@ function Home() {
                     <Link to="/products">
                         <Button
                             variant='danger'
-                            size='large'>
+                            size='large'
+                            className={'rounded-md p-3'}>
                             View all Products
                         </Button>
                     </Link>
